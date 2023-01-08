@@ -1,11 +1,23 @@
-vim.keymap.set('n','<leader>ta','<Cmd>ToggleAlternate<CR>')
+vim.keymap.set('n', '<leader>ta', '<Cmd>ToggleAlternate<CR>')
 
-require('nvim-autopairs').setup{
-  disable_filetype = {'TelescopePrompt','vim'}
+require('nvim-autopairs').setup {
+  disable_filetype = { 'TelescopePrompt', 'vim' }
 }
 
-require('nvim-ts-autotag').setup{}
-require('Comment').setup{}
+require('nvim-ts-autotag').setup {}
+require('Comment').setup {}
 
 -- nvim-tree setting
-require('nvim-tree').setup{}
+require('nvim-tree').setup {}
+
+-- style
+require('fidget').setup()
+require('noice').setup()
+require('notify').setup({
+  render = "minimal"
+})
+require('toggleterm').setup({
+  direction = 'float',
+  open_mapping = [[<c-\>]],
+  shade_terminals = true
+})

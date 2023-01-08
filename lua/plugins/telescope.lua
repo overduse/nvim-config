@@ -29,7 +29,8 @@ require('telescope').setup({
   extensions = {
     project = {
       base_dirs = {
-        '~/workshop'
+        '~/workshop',
+        '~/.config/nvim'
       },
       hidden_files = true,
       theme = "dropdown",
