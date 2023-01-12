@@ -22,7 +22,11 @@ return require('packer').startup(function(use)
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 
   -- nvim-tree
-  use('kyazdani42/nvim-tree.lua')
+  use {
+    'nvim-tree/nvim-tree.lua',
+    tag = 'nightly'
+  }
+
   use('p00f/nvim-ts-rainbow')
   use('axelvc/template-string.nvim')
 

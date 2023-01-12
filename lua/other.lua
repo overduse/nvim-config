@@ -7,9 +7,6 @@ require('nvim-autopairs').setup {
 require('nvim-ts-autotag').setup {}
 require('Comment').setup {}
 
--- nvim-tree setting
-require('nvim-tree').setup {}
-
 -- style
 require('fidget').setup()
 require('noice').setup()
