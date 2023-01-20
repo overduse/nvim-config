@@ -1,12 +1,8 @@
--- check lspconfig
-local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
-
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
-local on_attach = function(_, bufnr, isTsserver)
+local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', bufopts)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
@@ -22,9 +18,6 @@ local on_attach = function(_, bufnr, isTsserver)
     group = vim.api.nvim_create_augroup('LspFormatting', { clear = true }),
     buffer = bufnr,
     callback = function()
-      if isTsserver == true then
-        require('typescript').actions.removeUnused({ sync = true })
-      end
       vim.lsp.buf.format()
     end
   })
@@ -33,59 +26,67 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
---local lsp_config = {
--- capabilities = capabilities,
--- on_attach = function(_, bufnr)
---   on_attach(_, bufnr)
--- end
---}
-
--- set typescript lsp
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+local lsp_config = {
+  capabilities = capabilities,
+  on_attach = function(_, bufnr)
+    on_attach(_, bufnr)
+  end
 }
 
--- set lua lsp
-nvim_lsp.sumneko_lua.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    require('lspconfig')[server_name].setup(lsp_config)
+  end,
 
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
-      },
-    },
-  },
-}
+  -- set clangd lsp
+  clangd = function()
+    require('lspconfig').clangd.setup(lsp_config)
+  end,
 
--- set pyright lsp
-nvim_lsp.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnostics = "workspace",
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = "off",
+  -- pyright
+  pyright = function()
+    require('lspconfig').pyright.setup(vim.tbl_extend('force', lsp_config, {
+      settings = {
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnostics = 'workspace',
+            useLibraryCodeForTypes = true,
+            typeCheckingMode = 'off',
+          }
+        }
       }
-    }
-  }
-}
+    }))
+  end,
 
--- set clangd lsp
-nvim_lsp.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+  -- lua
+  sumneko_lua = function()
+    require('lspconfig').sumneko_lua.setup(vim.tbl_extend('force', lsp_config, {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          }
+        }
+      }
+    }))
+  end,
+
+  -- typescript
+  tsserver = function()
+    require('typescript').setup({
+      server = vim.tbl_extend('force', lsp_config, {
+        on_attach = function(_, bufnr)
+          on_attach(_, bufnr)
+        end,
+        init_options = {
+          preferences = {
+            importMOduleSpecifierPreference = 'projectrelative',
+            jsxAttributeCompletionStylr = 'none',
+          }
+        }
+      })
+    })
+  end,
+
+})
