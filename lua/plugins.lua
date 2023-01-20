@@ -1,4 +1,4 @@
-local status, packer = pcall(require, "packer")
+local status = pcall(require, "packer")
 if (not status) then
   print("packer is not install")
   return
@@ -86,6 +86,10 @@ return require('packer').startup(function(use)
 
   -- markdown-preview
   use('iamcco/markdown-preview.nvim')
+
+  -- bookmark
+  use('MattesGroeger/vim-bookmarks')
+  use('tom-anders/telescope-vim-bookmarks.nvim')
 
   -- other
   use('rmagatti/alternate-toggler')
