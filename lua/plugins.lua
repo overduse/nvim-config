@@ -68,6 +68,9 @@ return require('packer').startup(function(use)
   use('nvim-telescope/telescope-project.nvim')
   use('kyazdani42/nvim-web-devicons')
 
+  --lazygit
+  use('kdheepak/lazygit.nvim')
+
   -- tudo-comments
   use({
     'folke/todo-comments.nvim',
