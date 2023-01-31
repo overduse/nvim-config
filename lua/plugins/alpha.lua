@@ -60,10 +60,14 @@ dashboard.section.header.opts.hl = "Type"
 dashboard.section.terminal.opts.hl = "Include"
 
 dashboard.opts.opts.noautocmd = true
+
 -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)
 
 
+local keymap = vim.keymap
+
+keymap.set('n', '<C-l>', ':Alpha<cr>')
 
 -- '',
 -- '⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕',
