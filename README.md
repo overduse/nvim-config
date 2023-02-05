@@ -1,5 +1,6 @@
 # file tree
 
+```tree
 .
 ├── README.md
 ├── init.lua
@@ -38,6 +39,7 @@
 └── tree
 
 4 directories, 32 files
+```
 
 # Screenshot
 
