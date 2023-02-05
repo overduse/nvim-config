@@ -35,7 +35,7 @@ dashboard.section.header.val = {
 }
 dashboard.section.buttons.val = {
   dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-  dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("a", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("p", "  Find project", ":Telescope project <CR>"),
   dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
   dashboard.button("g", "  Find text", ":Telescope live_grep <CR>"),
@@ -65,9 +65,8 @@ dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
 
 
-local keymap = vim.keymap
-
-keymap.set('n', '<C-l>', ':Alpha<cr>')
+-- local keymap = vim.keymap
+-- keymap.set('n', '<C-l>', ':Alpha<cr>')
 
 -- '',
 -- '⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕',

@@ -19,4 +19,6 @@ require('plugins.todo-comments')
 require('plugins.nvimtree')
 require('plugins.bookmarks')
 require('plugins.toggleterm')
+require('plugins.lspsaga')
+
 require('other')

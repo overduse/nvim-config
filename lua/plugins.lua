@@ -32,6 +32,11 @@ return require('packer').startup(function(use)
 
   -- configurations for nvim lsp
   use('neovim/nvim-lspconfig')
+  -- i dont know way it doesn't work
+  use({
+    'glepnir/lspsaga.nvim',
+    branch = "main",
+  })
 
   -- completions plugins
   use('hrsh7th/nvim-cmp') -- core plugin
@@ -41,6 +46,12 @@ return require('packer').startup(function(use)
   use('hrsh7th/cmp-nvim-lsp')
   use('hrsh7th/cmp-nvim-lua')
   use('f3fora/cmp-spell') -- spell check
+
+  -- debugger dap things
+  -- use('mfussenegger/nvim-dap')
+  -- use('jay-babu/mason-nvim-dap.nvim')
+  -- use('theHamsta/nvim-dap-virtual-text')
+  -- use('rcarriga/nvim-dap-ui')
 
   -- luasnip
   use({
