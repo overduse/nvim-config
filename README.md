@@ -1,6 +1,16 @@
+# Lazy.nvim Migrated
+
+quite glad to migrate to [lLazy.nvim](https://github.com/folke/lazy.nvim) manager
+
+![lazy board](./pic/Screenshot_alpha)
+
+Much faster and have nicer ui
+
+my Lazy management file is ./lua/plugins.lua
+
 # file tree
 
-```tree
+```
 .
 ├── README.md
 ├── init.lua
@@ -20,8 +30,6 @@
 │   │   ├── lualine.lua
 │   │   ├── mason.lua
 │   │   ├── nvimtree.lua
-│   │   ├── snip.lua
-│   │   ├── sniprun.lua
 │   │   ├── telescope.lua
 │   │   ├── todo-comments.lua
 │   │   ├── toggleterm.lua
@@ -36,9 +44,9 @@
 │   ├── Screenshot_noise.png
 │   ├── Screenshot_telescope.png
 │   └── Screenshot_toggleterm.png
-└── tree
+└── tree.md
 
-4 directories, 32 files
+4 directories, 30 files 2/10/23
 ```
 
 # Screenshot
