@@ -1,129 +1,124 @@
-local status = pcall(require, "packer")
-if (not status) then
-  print("packer is not install")
-  return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd [[packadd packer.nvim]]
+local status, lazy = pcall(require, 'lazy')
+if not status then return end
 
-return require('packer').startup(function(use)
-  -- Package manager
-  use('wbthomason/packer.nvim')
 
-  -- GUI
-  -- Theme
-  use('sainnhe/everforest')
-  use('folke/tokyonight.nvim')
+lazy.setup({
 
-  -- Lualine everforest
-  use('nvim-lualine/lualine.nvim')
+  -- color scheme
+  {"folke/tokyonight.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme tokyonight]])
+    end
+  },
+
+  -- alpha
+  -- {'goolord/alpha-nvim',},
+
+  --lualine
+  {'nvim-lualine/lualine.nvim'},
 
   -- bufferline
-  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+  {'akinsho/bufferline.nvim',tag = "v3.*", dependencies= 'nvim-tree/nvim-web-devicons'},
+
 
   -- nvim-tree
-  use {
-    'nvim-tree/nvim-tree.lua',
-    tag = 'nightly'
-  }
+  {'nvim-tree/nvim-tree.lua', tag = 'nightly', dependencies='nvim-tree/nvim-web-devicons'},
 
-  use('p00f/nvim-ts-rainbow')
-  use('axelvc/template-string.nvim')
+  -- telescope
+  {'nvim-lua/plenary.nvim'},
+  {'nvim-telescope/telescope.nvim', dependencies='nvim-lua/plenary.nvim'},
+  {'nvim-telescope/telescope-file-browser.nvim'},
+  {'nvim-telescope/telescope-project.nvim'},
+  
+  -- bookmark
+  {'MattesGroeger/vim-bookmarks'},
+  {'tom-anders/telescope-vim-bookmarks.nvim'},
 
-  -- configurations for nvim lsp
-  use('neovim/nvim-lspconfig')
-  -- i dont know way it doesn't work
-  use({
-    'glepnir/lspsaga.nvim',
-    branch = "main",
-  })
+  -- mason
+  {'williamboman/mason.nvim'},
+  {'williamboman/mason-lspconfig.nvim'},
+
+  -- lsp
+  {'neovim/nvim-lspconfig'},
+
+  {'glepnir/lspsaga.nvim',
+    event = 'BufRead',
+    dependencies = 'nvim-tree/nvim-web-devicons'},
 
   -- completions plugins
-  use('hrsh7th/nvim-cmp') -- core plugin
-  use('hrsh7th/cmp-buffer') -- buffer completions
-  use('hrsh7th/cmp-cmdline') -- command-line completions
-  use('hrsh7th/cmp-path')
-  use('hrsh7th/cmp-nvim-lsp')
-  use('hrsh7th/cmp-nvim-lua')
-  use('f3fora/cmp-spell') -- spell check
+  {'hrsh7th/nvim-cmp'},  -- core plugins
+  {'hrsh7th/cmp-buffer'},-- buffer complication
+  {'hrsh7th/cmp-cmdline'},
+  {'hrsh7th/cmp-path'},
 
-  -- debugger dap things
-  -- use('mfussenegger/nvim-dap')
-  -- use('jay-babu/mason-nvim-dap.nvim')
-  -- use('theHamsta/nvim-dap-virtual-text')
-  -- use('rcarriga/nvim-dap-ui')
+  {'hrsh7th/cmp-nvim-lsp'},
 
-  -- luasnip
-  use({
-    "L3MON4D3/LuaSnip",
-    tag = "v<CurrentMajor>.*"
-  })
+  {'hrsh7th/cmp-nvim-lua'},
+  {'f3fora/cmp-spell'},
+  {'saadparwaiz1/cmp_luasnip'},
+  {'jose-elias-alvarez/typescript.nvim'},
 
-  use('saadparwaiz1/cmp_luasnip')
-  use('rafamadriz/friendly-snippets') -- a bunch of snippets to use
-  use('jose-elias-alvarez/typescript.nvim')
+  {'onsails/lspkind-nvim'},
+  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 
-  -- lspkind
-  use('onsails/lspkind-nvim')
+  --snip
+  {'L3MON4D3/LuaSnip',
+	version = '<CurrentMajor>.*',
+	--build = 'make install_jsregexp'
+  },
+  
+  -- todo comment
+  {'folke/todo-comments.nvim'},
+  
+  -- markdown preview
+  {'iamcco/markdown-preview.nvim', build = function() vim.fn["mkdp#util#install"]() end},
+  
+  -- other stuff
+  {'p00f/nvim-ts-rainbow'},
+  {'axelvc/template-string.nvim'},
 
-  -- treesitter
-  use({
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  })
+  {'rmagatti/alternate-toggler'},
+  {'windwp/nvim-autopairs'},
+  {'windwp/nvim-ts-autotag'},
+  {'numToStr/Comment.nvim'},
+  {'wellle/targets.vim'},
+  {'mg979/vim-visual-multi'},
 
-  --telescope
-  use('nvim-lua/plenary.nvim')
-  use('nvim-telescope/telescope.nvim')
-  use('nvim-telescope/telescope-file-browser.nvim')
-  use('nvim-telescope/telescope-project.nvim')
-  use('kyazdani42/nvim-web-devicons')
 
-  --lazygit
-  use('kdheepak/lazygit.nvim')
-
-  -- tudo-comments
-  use({
-    'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim'
-  })
-
-  --alpha.nvim
-  use('goolord/alpha-nvim')
-
-  -- mason.nvim is a powerful plugins-manager
-  use('williamboman/mason.nvim')
-  use('williamboman/mason-lspconfig.nvim')
-
-  -- sniprun
-  use { 'michaelb/sniprun', run = 'bash ./install.sh 1' }
-
-  -- markdown-preview
-  use('iamcco/markdown-preview.nvim')
-
-  -- bookmark
-  use('MattesGroeger/vim-bookmarks')
-  use('tom-anders/telescope-vim-bookmarks.nvim')
-
-  -- other
-  use('rmagatti/alternate-toggler')
-  use('windwp/nvim-autopairs')
-  use('windwp/nvim-ts-autotag')
-  use('numToStr/Comment.nvim')
-  use('wellle/targets.vim')
-  use('mg979/vim-visual-multi')
   -- style
-  use('j-hui/fidget.nvim')
-  use({
-    'folke/noice.nvim',
-    requires = {
-      'MunifTanjim/nui.nvim',
+  {'folke/noice.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim', 
       'rcarriga/nvim-notify',
-    }
-  })
-  use({
-    'akinsho/toggleterm.nvim',
-    tag = '*'
-  })
+    },
+  },
+  {'akinsho/toggleterm.nvim'},
 
-end)
+})
+
+
+--   -- debugger dap things
+--   -- use('mfussenegger/nvim-dap')
+--   -- use('jay-babu/mason-nvim-dap.nvim')
+--   -- use('theHamsta/nvim-dap-virtual-text')
+--   -- use('rcarriga/nvim-dap-ui')
+--
+--   -- sniprun
+--   use { 'michaelb/sniprun', run = 'bash ./install.sh 1' }
+--

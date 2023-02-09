@@ -8,7 +8,6 @@ require('nvim-ts-autotag').setup {}
 require('Comment').setup {}
 
 -- style
-require('fidget').setup()
 require('noice').setup()
 require('notify').setup({
   render = "minimal"

@@ -1,5 +1,5 @@
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
+local status, alpha = pcall(require, "alpha")
+if not status then
   return
 end
 

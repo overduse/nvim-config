@@ -8,8 +8,7 @@
 │   ├── base.lua
 │   ├── color.lua
 │   ├── lsp.lua
-│   ├── maps.lua
-│   ├── other.lua
+│   ├── maps.lua │   ├── other.lua
 │   ├── plugins
 │   │   ├── alpha.lua
 │   │   ├── bookmarks.lua
