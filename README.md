@@ -1,8 +1,8 @@
 # Lazy.nvim Migrated
 
-quite glad to migrate to [lLazy.nvim](https://github.com/folke/lazy.nvim) manager
+quite glad to migrate to [Lazy.nvim](https://github.com/folke/lazy.nvim) manager
 
-![lazy board](./pic/Screenshot_alpha)
+![lazy](./pic/Screenshot_alpha.png)
 
 Much faster and have nicer ui
 
