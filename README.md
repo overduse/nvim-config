@@ -2,7 +2,7 @@
 
 quite glad to migrate to [Lazy.nvim](https://github.com/folke/lazy.nvim) manager
 
-![lazy](./pic/Screenshot_alpha.png)
+![lazy](./pic/Screenshot_lazy.png)
 
 Much faster and have nicer ui
 
