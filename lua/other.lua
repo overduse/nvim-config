@@ -8,7 +8,7 @@ require('nvim-ts-autotag').setup {}
 require('Comment').setup {}
 
 -- style
-require('noice').setup()
-require('notify').setup({
-    render = "minimal"
-})
+-- require('noice').setup()
+-- require('notify').setup({
+--     render = "minimal"
+-- })

@@ -18,6 +18,8 @@ require('plugins.todo-comments')
 require('plugins.nvimtree')
 require('plugins.bookmarks')
 require('plugins.toggleterm')
+require('plugins.tokyonight')
+require('plugins.noise')
 require('plugins.lspsaga')
 
 require('other')

@@ -19,12 +19,8 @@ lazy.setup({
 
     -- color scheme
     { "folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-          -- load the colorscheme here
-          vim.cmd([[colorscheme tokyonight]])
-        end
+        lazy = false,
+        priority = 1000,
     },
 
     -- alpha
@@ -107,6 +103,7 @@ lazy.setup({
     { 'wellle/targets.vim' },
     { 'mg979/vim-visual-multi' },
 
+    { 'Pocco81/true-zen.nvim' },
 
     -- style
     { 'folke/noice.nvim',
@@ -115,6 +112,7 @@ lazy.setup({
             'rcarriga/nvim-notify',
         },
     },
+
     { 'akinsho/toggleterm.nvim' },
 
 })
