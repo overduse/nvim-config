@@ -92,6 +92,18 @@ lazy.setup({
     -- markdown preview
     { 'iamcco/markdown-preview.nvim', build = function() vim.fn["mkdp#util#install"]() end },
 
+    -- chatgpt api
+    { "jackMort/ChatGPT.nvim",
+        config = function()
+          require("chatgpt").setup()
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        },
+    },
+
     -- other stuff
     { 'p00f/nvim-ts-rainbow' },
     { 'axelvc/template-string.nvim' },
