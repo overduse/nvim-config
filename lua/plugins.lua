@@ -31,7 +31,6 @@ lazy.setup({
 
     -- bufferline
     { 'akinsho/bufferline.nvim',
-        tag = "v3.*",
         dependencies = 'nvim-tree/nvim-web-devicons' },
 
 
@@ -81,10 +80,7 @@ lazy.setup({
     { 'rafamadriz/friendly-snippets' },
 
     --snip
-    { 'L3MON4D3/LuaSnip',
-        version = '<CurrentMajor>.*',
-        --build = 'make install_jsregexp'
-    },
+    { 'L3MON4D3/LuaSnip' },
 
     -- todo comment
     { 'folke/todo-comments.nvim' },
@@ -93,16 +89,16 @@ lazy.setup({
     { 'iamcco/markdown-preview.nvim', build = function() vim.fn["mkdp#util#install"]() end },
 
     -- chatgpt api
-    { "jackMort/ChatGPT.nvim",
-        config = function()
-          require("chatgpt").setup()
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        },
-    },
+    -- { "jackMort/ChatGPT.nvim",
+    --     config = function()
+    --       require("chatgpt").setup()
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     },
+    -- },
 
     -- other stuff
     { 'p00f/nvim-ts-rainbow' },
