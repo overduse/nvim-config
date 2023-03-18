@@ -1,14 +1,12 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    'sumneko_lua',
+    'lua_ls',
     'clangd',
     'pyright',
-    --'cmake-language-server',
-    --'python-lsp-server',
     'tsserver',
     'graphql',
-    'rust_analyzer'
+    'rust_analyzer',
   },
   automatic_installation = true,
 })

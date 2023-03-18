@@ -10,7 +10,6 @@ require('telescope').setup({
     prompt_prefix = ' ',
     selection_caret = ' ',
     path_display = { 'smart' },
-
     mappings = {
       i = {
         ['<esc>'] = actions.close,
@@ -25,7 +24,6 @@ require('telescope').setup({
       },
     },
   },
-
   extensions = {
     project = {
       base_dirs = {
@@ -49,4 +47,5 @@ require('telescope').load_extension('vim_bookmarks')
 vim.keymap.set('n', '<leader>f', '<cmd>lua require("telescope.builtin").find_files({no_ignore=false,hidden=true})<cr>')
 vim.keymap.set('n', '<leader>g', '<cmd>lua require("telescope.builtin").live_grep({no_ignore=false,hidden=true})<cr>')
 vim.keymap.set('n', '<leader>r', '<cmd>lua require("telescope.builtin").oldfiles({no_ignore=false,hidden=true})<cr>')
-vim.keymap.set('n', '<leader>p', ':Telescope project <CR>')
+vim.keymap.set('n', '<leader>p', ':Telescope project <cr>')
+vim.keymap.set('n', '<leader>t', ':TodoTelescope <cr>')
