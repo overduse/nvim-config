@@ -4,4 +4,3 @@ require('toggleterm').setup({
   shade_terminals = true
 })
 
--- vim.keymap.set('n', '<leader>l', ':LazyGit<cr>')

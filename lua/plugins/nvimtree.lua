@@ -34,7 +34,5 @@ require('nvim-tree').setup {
       error = 'E',
     }
   }
-  -- auto_close = false
 }
-
 vim.keymap.set('n', '<c-s>', '<cmd>NvimTreeToggle<cr>')
