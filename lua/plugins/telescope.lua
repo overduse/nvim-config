@@ -1,50 +1,59 @@
-local actions = require('telescope.actions')
-
-require('nvim-web-devicons').setup({
-  override = {},
-  default = true,
-})
-
-require('telescope').setup({
-  defaults = {
-    prompt_prefix = ' ',
-    selection_caret = ' ',
-    path_display = { 'smart' },
-    mappings = {
-      i = {
-        ['<esc>'] = actions.close,
-        ['<c-u>'] = actions.preview_scrolling_up,
-        ['<c-d>'] = actions.preview_scrolling_down,
-      },
+return {
+  -- Telescope --
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-project.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make'
+      }
     },
-    layout_config = {
-      horizontal = {
-        preview_cutoff = 100,
-        preview_width = 0.6,
-      },
+    cmd = "Telescope",
+    event = "BufReadPre",
+    keys = {
+      { "<leader>f", ":Telescope find_files<CR>", desc = "find files" },
+      { "<leader>g", ":Telescope live_grep<CR>", desc = "grep file" },
+      { "<leader>R", ":Telescope resume<CR>", desc = "resume" },
+      { "<leader>r", ":Telescope oldfiles<CR>", desc = "oldfiles" },
+      { "<leader>t", ":TodoTelescope<CR>", desc = "todo search" },
     },
-  },
-  extensions = {
-    project = {
-      base_dirs = {
-        '~/workshop',
-        '~/.config/nvim'
-      },
-      hidden_files = true,
-      theme = "dropdown",
-      order_by = 'asc',
-      search_by = 'title',
-      sync_with_nvim_tree = true,
-    }
+    config = function()
+      require('telescope').setup {
+        extensions = {
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+          },
+          project = {
+            base_dirs = {
+              -- you can load workspace path here:
+              --
+            }
+          }
+        }
+      }
+      require('telescope').load_extension('fzf')
+      require('telescope').load_extension('project')
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[f] find files' })
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = '[g] grep file' })
+      vim.keymap.set('n', '<leader>r', builtin.oldfiles, { desc = '[r] Find recently opened files' })
+      vim.keymap.set('n', '<leader>R', builtin.resume, { desc = '[R] Resume telescope' })
+      vim.keymap.set('n', '<leader>t', builtin.resume, { desc = '[R] Resume telescope' })
+      -- dashboard.button("t", "  Todo List", ":TodoTelescope <cr>"),
+      vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[space] Find files in buffers' })
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[h] show help tag of telescope' })
+      vim.keymap.set('n', '<leader>/', function()
+        -- You can pass additional configuration to telescope to change theme, layout, etc.
+        require('telescope.builtin').current_buffer_fuzzy_find( require('telescope.themes').get_cursor {
+        previewer = false,
+        })
+      end, { desc = '[/] Fuzzily search in current buffer' })
+    end
   }
-})
-
-require('telescope').load_extension('project')
-
--- set telescope keymap
-
-vim.keymap.set('n', '<leader>f', '<cmd>lua require("telescope.builtin").find_files({no_ignore=false,hidden=true})<cr>')
-vim.keymap.set('n', '<leader>g', '<cmd>lua require("telescope.builtin").live_grep({no_ignore=false,hidden=true})<cr>')
-vim.keymap.set('n', '<leader>r', '<cmd>lua require("telescope.builtin").oldfiles({no_ignore=false,hidden=true})<cr>')
-vim.keymap.set('n', '<leader>p', ':Telescope project <cr>')
-vim.keymap.set('n', '<leader>t', ':TodoTelescope <cr>')
+}

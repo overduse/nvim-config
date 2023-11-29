@@ -1,4 +1,12 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "Lua.completion.autoRequire": false
+    "Lua.completion.autoRequire": false,
+    "diagnostics.globals": [
+        "vim",
+        "Text"
+    ],
+    "diagnostics.disable": [
+        "missing-fields",
+        "assign-type-mismatch"
+    ]
 }
