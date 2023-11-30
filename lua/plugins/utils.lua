@@ -80,6 +80,13 @@ return {
     end,
     config=true
   },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = true,
+  },
+
+
   -- Toggleterm --
   {
     "akinsho/toggleterm.nvim",
@@ -99,6 +106,7 @@ return {
   {
       'numToStr/Comment.nvim',
       lazy = false,
+      opts={},
   },
   {
     "folke/todo-comments.nvim",
