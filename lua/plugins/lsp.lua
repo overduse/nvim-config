@@ -26,6 +26,8 @@ return{
     --require('lspconfig').rust_analyzer.setup({})
     --require('lspconfig').pylsp.setup({})
       require('lspconfig').pyright.setup({})
+      require('lspconfig').clangd.setup({})
+      require('lspconfig').cmake.setup({})
 
     end
   },
@@ -60,6 +62,8 @@ return{
           'stylua',
           'graphql-language-service-cli',
           "pyright",
+          "clangd",
+          "cmake-language-server",
         },
         auto_update = true,
       })
