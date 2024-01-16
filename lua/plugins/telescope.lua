@@ -44,8 +44,6 @@ return {
       vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = '[g] grep file' })
       vim.keymap.set('n', '<leader>r', builtin.oldfiles, { desc = '[r] Find recently opened files' })
       vim.keymap.set('n', '<leader>R', builtin.resume, { desc = '[R] Resume telescope' })
-      vim.keymap.set('n', '<leader>t', builtin.resume, { desc = '[R] Resume telescope' })
-      -- dashboard.button("t", "  Todo List", ":TodoTelescope <cr>"),
       vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[space] Find files in buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[h] show help tag of telescope' })
       vim.keymap.set('n', '<leader>/', function()
