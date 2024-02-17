@@ -33,6 +33,7 @@ return {
             base_dirs = {
               -- you can load workspace path here:
               --
+              "~/codebase/",
             }
           }
         }

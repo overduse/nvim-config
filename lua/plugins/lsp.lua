@@ -23,10 +23,12 @@ return{
           },
         },
       })
-    --require('lspconfig').rust_analyzer.setup({})
-    --require('lspconfig').pylsp.setup({})
+      --require('lspconfig').rust_analyzer.setup({})
+      --require('lspconfig').pylsp.setup({})
       require('lspconfig').pyright.setup({})
-      require('lspconfig').clangd.setup({})
+      require('lspconfig').clangd.setup({
+        cmd = {"clangd", "--background-index", "--suggest-missing-includes"}
+      })
       require('lspconfig').cmake.setup({})
 
     end
@@ -82,6 +84,7 @@ return{
       { "<leader>k", mode = "n","<cmd>Lspsaga hover_doc<cr>", desc = "saga hover doc" },
       { "<leader>ca", mode = {"n", "v"},"<cmd>Lspsaga code_action<cr>", desc = "saga code action" },
       { "gd", mode = "n","<cmd>Lspsaga goto_definition<cr>" , desc = "saga definition" },
+      { "gh", mode = "n","<cmd>Lspsaga finder<cr>" , desc = "saga finder" },
       { "[d", mode = "n","<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "diagnostic prev" },
       { "]d", mode = "n","<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "diagnostic prev" },
       { "<leader>o", mode = "n","<cmd>Lspsaga outline<cr>", desc = "outline tree" },
