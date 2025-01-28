@@ -24,7 +24,7 @@ return{
         },
       })
       --require('lspconfig').rust_analyzer.setup({})
-      require('lspconfig').pylsp.setup({})
+      -- require('lspconfig').pylsp.setup({})
       require('lspconfig').pyright.setup({})
       require('lspconfig').clangd.setup({
         cmd = {"clangd", "--background-index", "--suggest-missing-includes"}
