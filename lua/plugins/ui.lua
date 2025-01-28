@@ -18,7 +18,7 @@ return {
           },
           style_preset = bufferline.style_preset.minimal,
 
-          numbers = "ordinal",
+          numbers = "both",
           indicator = {
             icon = '▎',
             style = 'icon',

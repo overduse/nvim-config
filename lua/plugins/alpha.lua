@@ -46,7 +46,7 @@ return{
         dashboard.button("f", "󰈞  Find file", ":Telescope find_files <cr>"),
         dashboard.button("t", "  Todo List", ":TodoTelescope <cr>"),
         dashboard.button("g", "󰊄  Find text", ":Telescope live_grep <cr>"),
-        dashboard.button("r", "  oldfiles", ":Telescope oldfiles<cr>"),
+        dashboard.button("r", "  Oldfiles", ":Telescope oldfiles<cr>"),
         dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <cr>"),
         dashboard.button("p", "  Find project", ":Telescope project <cr>"),
         dashboard.button("a", "  New file", ":ene <BAR> startinsert <cr>"),
@@ -54,7 +54,7 @@ return{
       }
 
       local function footer()
-        return "overduse@Terry"
+        return "Haru@overduse"
       end
 
       dashboard.section.footer.val = footer()

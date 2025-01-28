@@ -36,7 +36,7 @@ return {
       })
 
 
-      vim.cmd[[colorscheme tokyonight]]
+      vim.cmd[[colorscheme tokyonight-moon]]
 
       require('barbecue').setup {
         theme = 'tokyonight',
