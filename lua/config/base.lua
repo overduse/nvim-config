@@ -49,4 +49,9 @@ vim.api.nvim_create_autocmd(
     end,
   }
 )
-
+-- Ensure restoring cursor style
+vim.api.nvim_create_autocmd('VimLeave', {
+  callback = function()
+    vim.opt.guicursor = "a:hor20" -- "a: {hor20|ver25|block}"
+  end,
+})

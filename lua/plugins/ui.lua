@@ -56,11 +56,6 @@ return {
               bg = { attribute = "bg", highlight = "TabLine" },
             },
 
-            -- buffer_selected = {
-            --   fg = {attribute='fg',highlight='#ff0000'},
-            --   bg = {attribute='bg',highlight='#0000ff'},
-            --   gui = 'none'
-            --   },
             buffer_visible = {
               fg = { attribute = "fg", highlight = "TabLine" },
               bg = { attribute = "bg", highlight = "TabLine" },
@@ -74,10 +69,6 @@ return {
               fg = { attribute = "fg", highlight = "TabLine" },
               bg = { attribute = "bg", highlight = "TabLine" },
             },
-            -- close_button_selected = {
-            --   fg = {attribute='fg',highlight='TabLineSel'},
-            --   bg ={attribute='bg',highlight='TabLineSel'}
-            --   },
 
             tab_selected = {
               fg = { attribute = "fg", highlight = "Normal" },
@@ -88,7 +79,6 @@ return {
               bg = { attribute = "bg", highlight = "TabLine" },
             },
             tab_close = {
-              -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
               fg = { attribute = "fg", highlight = "TabLineSel" },
               bg = { attribute = "bg", highlight = "Normal" },
             },
@@ -130,10 +120,6 @@ return {
               fg = { attribute = "bg", highlight = "Normal" },
               bg = { attribute = "bg", highlight = "Normal" },
             },
-            -- separator_visible = {
-            --   fg = {attribute='bg',highlight='TabLine'},
-            --   bg = {attribute='bg',highlight='TabLine'}
-            --   },
             indicator_selected = {
               fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
               bg = { attribute = "bg", highlight = "Normal" },
@@ -141,13 +127,11 @@ return {
 
         },
 
-
     }
       vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
       vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
     end
   },
-
 
   -- Noise --
   {
@@ -165,11 +149,11 @@ return {
       },
       -- you can enable a present for easier configuration
       presets = {
-        bottom_search = true,
-        command_palette = true,
+        bottom_search = false,
+        command_palette = false,
         long_message_to_split = true,
         inc_rename = false,
-        lsp_doc_border = false
+        lsp_doc_border = false,
       },
     },
     dependencies = {

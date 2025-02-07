@@ -7,8 +7,6 @@ return {
     dependencies = {
       "nvim-lualine/lualine.nvim",
       "nvim-tree/nvim-web-devicons",
-      "utilyre/barbecue.nvim",
-      "SmiteshP/nvim-navic",
     },
     config = function()
       -- tokyonight scheme
@@ -20,32 +18,27 @@ return {
         terminal_colors = true,
 
         styles = {
-          comments = { italic = true },
-          keywords = { italic = true },
+          comments  = { italic = true },
+          keywords  = { italic = true },
           functions = {},
           variables = {},
 
-          sidebars = "dark",
-          floats = "dark",
+          sidebars = "normal",
+          floats = "normal",
         },
         sidebars = { "qf", "help" },
         day_brightness = 0.3,
         hide_inactive_statusline = false,
-        dim_inactive = false,
+        dim_inactive = true,
         lualine_bold = false,
       })
 
-
-      vim.cmd[[colorscheme tokyonight-moon]]
-
-      require('barbecue').setup {
-        theme = 'tokyonight',
-      }
+      vim.cmd[[colorscheme tokyonight]]
       require('lualine').setup {
         options = {
-          theme = 'tokyonight'
-        }
+          theme = 'auto',
+        },
       }
     end
-  },
+    },
 }

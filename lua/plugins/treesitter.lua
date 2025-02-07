@@ -9,7 +9,7 @@ return {
   build = ":TSUpdate",
   opts = {
     ensure_installed = {
-      "c", "lua", "vim", "vimdoc", "query", "python",
+      "c", "lua", "vim", "vimdoc", "query", "python", "toml",
       "cpp", "markdown", "markdown_inline", "regex", "bash",
     },
 

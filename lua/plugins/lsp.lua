@@ -8,32 +8,35 @@ return{
       "folke/neoconf.nvim",
       "folke/neodev.nvim",
       "j-hui/fidget.nvim",
+      "saghen/blink.cmp",
     },
     config = function()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
       require('neoconf').setup({})
       require('neodev').setup({})
       require('fidget').setup({})
-      require('lspconfig').lua_ls.setup({
+
+      require('lspconfig').pyright.setup({
+        capabilities = capabilities,
         settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = { 'vim' },
-            },
-          },
-        },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "openFilesOnly",
+              useLibraryCodeForTypes = true
+            }
+          }
+        }
       })
-      --require('lspconfig').rust_analyzer.setup({})
-      -- require('lspconfig').pylsp.setup({})
-      require('lspconfig').pyright.setup({})
+      require('lspconfig').lua_ls.setup({capabilities = capabilities})
       require('lspconfig').clangd.setup({
+        capabilities = capabilities,
         cmd = {"clangd", "--background-index", "--suggest-missing-includes"}
       })
-      require('lspconfig').cmake.setup({})
-
+      require('lspconfig').cmake.setup({capabilities = capabilities})
     end
   },
-
   -- Mason Config --
   {
     "williamboman/mason.nvim",
@@ -96,6 +99,7 @@ return{
       'nvim-tree/nvim-web-devicons',     -- optional
     }
   },
+
   -- Lsp Kind
   {
     'onsails/lspkind-nvim',
@@ -103,14 +107,7 @@ return{
       require('lspkind').init({
           -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
           mode = 'symbol_text',
-
-          -- default symbol map
-          -- can be either 'default' (requires nerd-fonts font) or
-          -- 'codicons' for codicon preset (requires vscode-codicons font)
           preset = 'codicons',
-          -- override preset symbols
-          --
-          -- default: {}
           symbol_map = {
             Text = "",
             Method = "",
@@ -139,10 +136,6 @@ return{
             TypeParameter = ""
           },
       })
-
     end,
-
-
   }
-
 }
