@@ -17,6 +17,13 @@ return {
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
           default = { 'lsp', 'path', 'snippets', 'buffer' },
+          providers = {
+            markdown = {
+              name = 'RenderMarkdown',
+              module = 'render-markdown.integ.blink',
+              fallbacks = { 'lsp' },
+            },
+          },
         },
       },
       opts_extend = { "sources.default" }

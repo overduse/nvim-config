@@ -14,7 +14,7 @@ return {
         -- scheme config
         style = "night",
         light_style = "day",
-        transparent = false,
+        transparent = true,
         terminal_colors = true,
 
         styles = {

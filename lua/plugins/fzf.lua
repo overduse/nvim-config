@@ -29,8 +29,8 @@ return {
       {"<leader>f", "<cmd>FzfLua files<cr>", desc = "Find Files"},
       {"<leader>g", "<cmd>FzfLua live_grep<cr>", desc = "Grep"},
       {"<leader>,", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer"},
-      {"<leader>R", "<cmd>FzfLua oldfiles<cr>", desc = "Recent"},
-      {"<leader>r", "<cmd>FzfLua resume<cr>", desc = "resume"},
+      {"<leader>r", "<cmd>FzfLua oldfiles<cr>", desc = "Recent"},
+      {"<leader>R", "<cmd>FzfLua resume<cr>", desc = "resume"},
     }
   },
   -- Todo-comments
