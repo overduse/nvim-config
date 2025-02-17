@@ -4,9 +4,7 @@ return{
     'goolord/alpha-nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
-      -- 'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
     },
-    -- event = "Buf",
     config = function()
       local status, alpha = pcall(require, "alpha")
       if not status then
@@ -44,8 +42,9 @@ return{
         '',
       }
       dashboard.section.buttons.val = {
-        dashboard.button("f", "󰈞  Find file", ":FzfLua files<cr>"),
         dashboard.button("t", "  Todo List", ":TodoFzfLua <cr>"),
+        dashboard.button("y", "󰇥  Yazi Manager", ":Yazi cwd<cr>"),
+        dashboard.button("f", "󰈞  Find file", ":FzfLua files<cr>"),
         dashboard.button("g", "󰊄  Find text", ":FzfLua live_grep <cr>"),
         dashboard.button("r", "  Oldfiles", ":FzfLua oldfiles<cr>"),
         dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <cr>"),
