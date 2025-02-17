@@ -44,8 +44,9 @@ return{
       dashboard.section.buttons.val = {
         dashboard.button("t", "  Todo List", ":TodoFzfLua <cr>"),
         dashboard.button("y", "󰇥  Yazi Manager", ":Yazi cwd<cr>"),
-        dashboard.button("f", "󰈞  Find file", ":FzfLua files<cr>"),
-        dashboard.button("g", "󰊄  Find text", ":FzfLua live_grep <cr>"),
+        dashboard.button("l", "  Lazygit", ":Lazygit<cr>"),
+        dashboard.button("f", "󰈞  Find files", ":FzfLua files<cr>"),
+        dashboard.button("g", "󰊄  Grep", ":FzfLua live_grep <cr>"),
         dashboard.button("r", "  Oldfiles", ":FzfLua oldfiles<cr>"),
         dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <cr>"),
         dashboard.button("q", "󰗼  Quit Neovim", ":qa<cr>"),
